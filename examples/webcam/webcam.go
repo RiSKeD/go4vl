@@ -19,10 +19,10 @@ import (
 	"strings"
 	"time"
 
+	"github.com/RiSKeD/go4vl/device"
+	"github.com/RiSKeD/go4vl/v4l2"
 	pigo "github.com/esimov/pigo/core"
 	"github.com/fogleman/gg"
-	"github.com/vladimirvivien/go4vl/device"
-	"github.com/vladimirvivien/go4vl/v4l2"
 )
 
 var (
@@ -233,7 +233,6 @@ func controlVideo(w http.ResponseWriter, req *http.Request) {
 	}
 
 	log.Printf("applied control %#v", ctrl)
-
 }
 
 func main() {

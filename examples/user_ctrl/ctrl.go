@@ -7,16 +7,14 @@ import (
 	"math"
 	"os"
 
-	dev "github.com/vladimirvivien/go4vl/device"
-	"github.com/vladimirvivien/go4vl/v4l2"
+	dev "github.com/RiSKeD/go4vl/device"
+	"github.com/RiSKeD/go4vl/v4l2"
 )
 
-var (
-	controls = map[string]v4l2.CtrlID{
-		"brightness": v4l2.CtrlBrightness,
-		"contrast":   v4l2.CtrlContrast,
-	}
-)
+var controls = map[string]v4l2.CtrlID{
+	"brightness": v4l2.CtrlBrightness,
+	"contrast":   v4l2.CtrlContrast,
+}
 
 func main() {
 	devName := "/dev/video0"
@@ -96,5 +94,4 @@ func printUserControl(ctrl v4l2.Control) {
 			fmt.Printf("\tMenu items for %s: %#v\n", ctrl.Name, m)
 		}
 	}
-
 }

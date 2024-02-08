@@ -9,13 +9,11 @@ import (
 	"net/http"
 	"net/textproto"
 
-	"github.com/vladimirvivien/go4vl/device"
-	"github.com/vladimirvivien/go4vl/v4l2"
+	"github.com/RiSKeD/go4vl/device"
+	"github.com/RiSKeD/go4vl/v4l2"
 )
 
-var (
-	frames <-chan []byte
-)
+var frames <-chan []byte
 
 func imageServ(w http.ResponseWriter, req *http.Request) {
 	mimeWriter := multipart.NewWriter(w)

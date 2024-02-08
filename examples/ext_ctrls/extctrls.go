@@ -6,8 +6,8 @@ import (
 	"log"
 	"os"
 
-	dev "github.com/vladimirvivien/go4vl/device"
-	"github.com/vladimirvivien/go4vl/v4l2"
+	dev "github.com/RiSKeD/go4vl/device"
+	"github.com/RiSKeD/go4vl/v4l2"
 )
 
 func main() {
@@ -48,5 +48,4 @@ func printControl(ctrl v4l2.Control) {
 			fmt.Printf("\t(%d) Menu %s: [%d]\n", m.Index, m.Name, m.Value)
 		}
 	}
-
 }

@@ -7,7 +7,7 @@ import (
 	"os"
 	sys "syscall"
 
-	"github.com/vladimirvivien/go4vl/v4l2"
+	"github.com/RiSKeD/go4vl/v4l2"
 )
 
 type Device struct {
@@ -80,7 +80,6 @@ func Open(path string, options ...Option) (*Device, error) {
 
 	// ensures IOType is set, only MemMap supported now
 	dev.config.ioType = v4l2.IOTypeMMAP
-
 
 	// set pix format
 	if dev.config.pixFormat != (v4l2.PixFormat{}) {

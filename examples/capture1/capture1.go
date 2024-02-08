@@ -10,8 +10,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/vladimirvivien/go4vl/device"
-	"github.com/vladimirvivien/go4vl/v4l2"
+	"github.com/RiSKeD/go4vl/device"
+	"github.com/RiSKeD/go4vl/v4l2"
 )
 
 func main() {
@@ -164,5 +164,4 @@ func main() {
 		os.Exit(1)
 	}
 	fmt.Println("Done.")
-
 }
