@@ -81,12 +81,6 @@ func Open(path string, options ...Option) (*Device, error) {
 	// ensures IOType is set, only MemMap supported now
 	dev.config.ioType = v4l2.IOTypeMMAP
 
-	// reset crop, only if cropping supported
-	if cropcap, err := v4l2.GetCropCapability(dev.fd, dev.bufType); err == nil {
-		if err := v4l2.SetCropRect(dev.fd, cropcap.DefaultRect); err != nil {
-			// ignore errors
-		}
-	}
 
 	// set pix format
 	if dev.config.pixFormat != (v4l2.PixFormat{}) {
@@ -97,17 +91,6 @@ func Open(path string, options ...Option) (*Device, error) {
 		dev.config.pixFormat, err = v4l2.GetPixFormat(dev.fd)
 		if err != nil {
 			return nil, fmt.Errorf("device open: %s: get default format: %w", path, err)
-		}
-	}
-
-	// set fps
-	if dev.config.fps != 0 {
-		if err := dev.SetFrameRate(dev.config.fps); err != nil {
-			return nil, fmt.Errorf("device open: %s: set fps: %w", path, err)
-		}
-	} else {
-		if dev.config.fps, err = dev.GetFrameRate(); err != nil {
-			return nil, fmt.Errorf("device open: %s: get fps: %w", path, err)
 		}
 	}
 
@@ -171,7 +154,6 @@ func (d *Device) GetOutput() <-chan []byte {
 // SetInput sets up an input channel for data this sent for output to the
 // underlying device driver.
 func (d *Device) SetInput(in <-chan []byte) {
-
 }
 
 // GetCropCapability returns cropping info for device
